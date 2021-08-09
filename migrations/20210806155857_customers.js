@@ -1,9 +1,9 @@
 exports.up = function (knex) {
   return knex.schema.createTable("customers", (table) => {
-    table.increments("id").primary().unsigned().notNullable();
-    table.string("name", 50).notNullable();
-    table.string("address", 100).notNullable();
-    table.integer("phone", 15);
+    table.increments("id").notNullable();
+    table.string("name");
+    table.string("address");
+    table.string("phone");
     table.timestamp("updated_at").defaultTo(knex.fn.now());
   });
 };
