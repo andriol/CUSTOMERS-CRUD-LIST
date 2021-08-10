@@ -51,7 +51,7 @@ router.route("/").post((req, res) => {
   console.log(req.body);
 });
 
-router.route("/").put((req, res) => {
+router.route("/:id").put((req, res) => {
   customer
     .where({ id: req.params.id })
     .fetch()
@@ -71,10 +71,20 @@ router.route("/").put((req, res) => {
     .catch((err) => res.send("Error updating customers data"));
 });
 
-//router.get("/", customersController.list);
-//router.post("/add", customersController.save);
-//router.get("/update/:id", customersController.edit);
-//router.post("/update/:id", customersController.update);
-//router.get("/delete/:id", customersController.delete);
+router.route("/:id").delete((req, res) => {
+  customer
+    .where({ id: req.params.id })
+    .destroy()
+    .then(() => {
+      res
+        .status(200)
+        .json({ message: `customer ${req.params.id} deleted successfully` });
+    })
+    .catch(() =>
+      res
+        .status(400)
+        .json({ message: `Error, can't delete customer ${req.params.id}` })
+    );
+});
 
 module.exports = router;
