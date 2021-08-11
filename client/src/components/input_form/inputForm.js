@@ -1,4 +1,6 @@
 import React from "react";
+import "bootswatch/dist/morph/bootstrap.min.css";
+//import "./inputForm.scss";
 
 function InputForm({ handleChange, handleSubmit, customer, customerList }) {
   console.log(customerList);
@@ -17,7 +19,33 @@ function InputForm({ handleChange, handleSubmit, customer, customerList }) {
                   <td>Actions</td>
                 </tr>
               </thead>
-              <tbody></tbody>
+              <tbody>
+                {customerList.map((customer) => {
+                  const { id, name, address, phone } = customer;
+                  return (
+                    <tr key={id}>
+                      <td>{id}</td>
+                      <td>{name}</td>
+                      <td>{address}</td>
+                      <td>{phone}</td>
+                      <td>
+                        <a
+                          href="/update/<%= data[i].id %>"
+                          class="btn btn-info"
+                        >
+                          Edit
+                        </a>
+                        <a
+                          href="/delete/<%= data[i].id %>"
+                          class="btn btn-danger"
+                        >
+                          Delete
+                        </a>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
             </table>
           </div>
           <div className="col-md-5">
@@ -60,16 +88,6 @@ function InputForm({ handleChange, handleSubmit, customer, customerList }) {
                   save customer
                 </button>
               </form>
-              {customerList.map((customer) => {
-                const { id, name, address, phone } = customer;
-                return (
-                  <div className="customer" key={id}>
-                    <h1>{name}</h1>
-                    <h2>{address}</h2>
-                    <h2>{phone}</h2>
-                  </div>
-                );
-              })}
             </div>
           </div>
         </div>

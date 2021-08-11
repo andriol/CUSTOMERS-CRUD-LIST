@@ -1,0 +1,10 @@
+@use "../../partials/bootswatch" as *;
+@use "../../partials/variables" as *;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
