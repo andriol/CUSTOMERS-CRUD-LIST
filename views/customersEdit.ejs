@@ -1,40 +1,40 @@
 <% include partials/_header %>
 
-<div className="container mt-5">
-  <div className="row">
-    <div className="col-md-5 offset-md-3 card">
-      <div className="card-body">
+<div classNameName="container mt-5">
+  <div classNameName="row">
+    <div classNameName="col-md-5 offset-md-3 card">
+      <div classNameName="card-body">
         <form action="/update/<%= data.id %>" method="POST">
-          <div className="form-group">
+          <div classNameName="form-group">
             <input
               type="text"
               name="name"
               value="<%= data.name%>"
               placeholder="Name"
-              className="form-control"
+              classNameName="form-control"
               autofocus
             />
           </div>
-          <div className="form-group">
+          <div classNameName="form-group">
             <input
               type="text"
               name="address"
               value="<%= data.address%>"
               placeholder="Address"
-              className="form-control"
+              classNameName="form-control"
             />
           </div>
-          <div className="form-group">
+          <div classNameName="form-group">
             <input
               type="text"
               name="phone"
               value="<%= data.phone%>"
               placeholder="Phone"
-              className="form-control"
+              classNameName="form-control"
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" classNameName="btn btn-primary">
             save customer
           </button>
         </form>

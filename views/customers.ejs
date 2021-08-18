@@ -1,9 +1,9 @@
 <%- include ("partials/_header.ejs"); -%>
 
-<div className="container mt-5">
-  <div className="row">
-    <div className="col-md-7">
-      <table className="table table-bordered table-hover">
+<div classNameName="container mt-5">
+  <div classNameName="row">
+    <div classNameName="col-md-7">
+      <table classNameName="table table-bordered table-hover">
         <thead>
           <tr>
             <td>n°</td>
@@ -21,10 +21,10 @@
             <td><%= data[i].address %></td>
             <td><%= data[i].phone %></td>
             <td>
-              <a href="/update/<%= data[i].id %>" className="btn btn-info"
+              <a href="/update/<%= data[i].id %>" classNameName="btn btn-info"
                 >Edit</a
               >
-              <a href="/delete/<%= data[i].id %>" className="btn btn-danger"
+              <a href="/delete/<%= data[i].id %>" classNameName="btn btn-danger"
                 >Delete</a
               >
             </td>
@@ -33,38 +33,38 @@
         </tbody>
       </table>
     </div>
-    <div className="col-md-5">
-      <div className="card-body">
+    <div classNameName="col-md-5">
+      <div classNameName="card-body">
         <form action="/add" method="POST">
-          <div className="form-group">
+          <div classNameName="form-group">
             <input
               type="text"
               name="name"
               placeholder="Name"
-              className="form-control"
+              classNameName="form-control"
               autofocus
               required
             />
           </div>
-          <div className="form-group">
+          <div classNameName="form-group">
             <input
               type="text"
               name="address"
               placeholder="Address"
-              className="form-control"
+              classNameName="form-control"
               required
             />
           </div>
-          <div className="form-group">
+          <div classNameName="form-group">
             <input
               type="text"
               name="phone"
               placeholder="Phone"
-              className="form-control"
+              classNameName="form-control"
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" classNameName="btn btn-primary">
             save customer
           </button>
         </form>

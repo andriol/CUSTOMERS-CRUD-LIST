@@ -1,9 +1,17 @@
 import React from "react";
 import "bootswatch/dist/morph/bootstrap.min.css";
+import { Link } from "react-router-dom";
 //import "./inputForm.scss";
 
-function InputForm({ handleChange, handleSubmit, customer, customerList }) {
-  console.log(customerList);
+function InputForm({
+  handleChange,
+  handleSubmit,
+  customer,
+  customerList,
+  deleteData,
+
+  selectCustomer,
+}) {
   return (
     <div>
       <div className="container mt-5">
@@ -29,18 +37,21 @@ function InputForm({ handleChange, handleSubmit, customer, customerList }) {
                       <td>{address}</td>
                       <td>{phone}</td>
                       <td>
-                        <a
-                          href="/update/<%= data[i].id %>"
-                          class="btn btn-info"
-                        >
-                          Edit
-                        </a>
-                        <a
-                          href="/delete/<%= data[i].id %>"
-                          class="btn btn-danger"
+                        <Link to={`/customer/${customer.id}`}>
+                          <button
+                            className="btn btn-info"
+                            onClick={() => selectCustomer(id)}
+                          >
+                            Edit
+                          </button>
+                        </Link>
+                        <button
+                          type="submit"
+                          onClick={() => deleteData(id)}
+                          className="btn btn-danger"
                         >
                           Delete
-                        </a>
+                        </button>
                       </td>
                     </tr>
                   );
@@ -60,6 +71,7 @@ function InputForm({ handleChange, handleSubmit, customer, customerList }) {
                     required
                     value={customer.name}
                     onChange={handleChange}
+                    autoFocus
                   />
                 </div>
                 <div className="form-group">
