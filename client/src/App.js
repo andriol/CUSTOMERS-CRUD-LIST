@@ -3,7 +3,6 @@ import EditForm from "./components/input_form/editForm";
 import uuid from "react-uuid";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import axios from "axios";
 
 const url = "http://localhost:8081/customer";
 
@@ -13,9 +12,7 @@ function App() {
     address: "",
     phone: "",
   });
-
   const [customerList, setCustomerList] = useState([]);
-  const [selectedCustomer, setSelectedCustomer] = useState({});
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -27,11 +24,11 @@ function App() {
     e.preventDefault();
 
     if (customer) {
-      const singleCustomer = { id: uuid(), ...customer };
+      const newCustomer = { id: uuid(), ...customer };
 
       fetch(url, {
         method: "POST",
-        body: JSON.stringify(singleCustomer),
+        body: JSON.stringify(newCustomer),
         headers: { "Content-type": "application/json; charset=UTF-8" },
       })
         .then((response) => response.json())
@@ -59,6 +56,16 @@ function App() {
   }, []);
   console.log(customerList);
 
+  const selectCustomer = async (id) => {
+    const response = await fetch(`http://localhost:8081/customer/${id}`);
+    const singleCustomer = await response.json();
+    console.log(singleCustomer);
+    setCustomer(singleCustomer);
+  };
+  useEffect(() => {
+    selectCustomer();
+  }, []);
+
   const deleteData = (id) => {
     fetch(`http://localhost:8081/customer/${id}`, {
       method: "DELETE",
@@ -75,24 +82,8 @@ function App() {
         console.log(data)
       );
   };
-  // const selectCustomer = (id) => {
-  //   fetch(`http://localhost:8081/customer/${id}`)
-  //     .then((res) => res.json())
 
-  //     .then((data) => console.log(data));
-  // };
-
-  const selectCustomer = async (id) => {
-    const response = await fetch(`http://localhost:8081/customer/${id}`);
-    const customer = await response.json();
-    setCustomer(customer);
-  };
-  useEffect(() => {
-    selectCustomer();
-  }, []);
-  console.log(customer);
   const editData = (id) => {
-    //const [name, address, phone] = customer;
     fetch(`http://localhost:8081/customer/${id}`, {
       method: "PUT",
       body: JSON.stringify(customer),
@@ -121,7 +112,6 @@ function App() {
               <Form
                 customerList={customerList}
                 customer={customer}
-                editData={editData}
                 selectCustomer={selectCustomer}
                 deleteData={deleteData}
                 handleChange={handleChange}
@@ -129,14 +119,17 @@ function App() {
               />
             )}
           />
-          <EditForm
+          <Route
             path="/customer/:id"
-            customer={customer}
-            customerList={customerList}
-            customer={customer}
-            editData={editData}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
+            render={() => (
+              <EditForm
+                customer={customer}
+                customerList={customerList}
+                editData={editData}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+              />
+            )}
           />
         </Switch>
       </BrowserRouter>

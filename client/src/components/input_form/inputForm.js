@@ -9,7 +9,6 @@ function InputForm({
   customer,
   customerList,
   deleteData,
-
   selectCustomer,
 }) {
   return (

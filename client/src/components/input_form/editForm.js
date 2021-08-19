@@ -7,7 +7,7 @@ function editForm({ handleChange, handleSubmit, customer, editData }) {
         <div className="row">
           <div className="col-md-5 offset-md-3 card">
             <div className="card-body">
-              <form onSubmit={handleSubmit}>
+              <form>
                 <div className="form-group">
                   <input
                     type="text"
@@ -43,7 +43,7 @@ function editForm({ handleChange, handleSubmit, customer, editData }) {
                 <button
                   type="submit"
                   className="btn btn-primary"
-                  onClick={() => editData()}
+                  onClick={() => editData(customer.id)}
                 >
                   save customer
                 </button>
