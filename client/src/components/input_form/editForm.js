@@ -1,13 +1,13 @@
 import React from "react";
 
-function editForm({ handleChange, handleSubmit, customer, editData }) {
+function editForm({ handleChange, customer, onSubmit }) {
   return (
     <div>
       <div className="container mt-5">
         <div className="row">
           <div className="col-md-5 offset-md-3 card">
             <div className="card-body">
-              <form>
+              <form onSubmit={onSubmit}>
                 <div className="form-group">
                   <input
                     type="text"
@@ -40,11 +40,7 @@ function editForm({ handleChange, handleSubmit, customer, editData }) {
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  onClick={() => editData(customer.id)}
-                >
+                <button type="submit" className="btn btn-primary">
                   save customer
                 </button>
               </form>

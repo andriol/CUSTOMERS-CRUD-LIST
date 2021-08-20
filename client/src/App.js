@@ -24,11 +24,11 @@ function App() {
     e.preventDefault();
 
     if (customer) {
-      const newCustomer = { id: uuid(), ...customer };
+      //const newCustomer = { ...customer };
 
       fetch(url, {
         method: "POST",
-        body: JSON.stringify(newCustomer),
+        body: JSON.stringify(customer),
         headers: { "Content-type": "application/json; charset=UTF-8" },
       })
         .then((response) => response.json())
@@ -82,9 +82,10 @@ function App() {
         console.log(data)
       );
   };
+  const onSubmit = (e) => {
+    e.preventDefault();
 
-  const editData = (id) => {
-    fetch(`http://localhost:8081/customer/${id}`, {
+    fetch(`http://localhost:8081/customer/${customer.id}`, {
       method: "PUT",
       body: JSON.stringify(customer),
 
@@ -125,9 +126,9 @@ function App() {
               <EditForm
                 customer={customer}
                 customerList={customerList}
-                editData={editData}
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
+                onSubmit={onSubmit}
               />
             )}
           />
