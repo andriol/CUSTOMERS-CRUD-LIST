@@ -38,6 +38,7 @@ function InputForm({
                       <td>
                         <Link to={`/customer/${customer.id}`}>
                           <button
+                            type="submit"
                             className="btn btn-info"
                             onClick={() => selectCustomer(id)}
                           >
