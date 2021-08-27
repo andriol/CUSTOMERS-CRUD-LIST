@@ -4,7 +4,7 @@ import uuid from "react-uuid";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-const url = "/customer";
+const url = "http://localhost:8081/customer";
 
 function App() {
   const [customer, setCustomer] = useState({
