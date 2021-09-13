@@ -1,4 +1,5 @@
 import React from "react";
+
 import "bootswatch/dist/morph/bootstrap.min.css";
 import { Link } from "react-router-dom";
 //import "./inputForm.scss";
@@ -10,6 +11,7 @@ function InputForm({
   customerList,
   deleteData,
   selectCustomer,
+  closeModal,
 }) {
   return (
     <div>

@@ -63,6 +63,7 @@ router.route("/:id").put((req, res) => {
           phone: req.body.phone,
         })
         .then((updatedCustomer) => {
+          console.log(updatedCustomer);
           res.json(updatedCustomer);
         })
         .catch((err) => res.send("error with the update"));

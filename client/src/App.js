@@ -4,7 +4,7 @@ import uuid from "react-uuid";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-const url = "http://localhost:8081/customer";
+const url = "http://localhost:8080/customer";
 
 function App() {
   const [customer, setCustomer] = useState({
@@ -43,9 +43,10 @@ function App() {
 
       setCustomer({ name: "", address: "", phone: "" });
     } else {
-      console.log("empty value");
+      console.log("no value");
     }
   };
+
   const getCustomers = async () => {
     const response = await fetch(url);
     const customerList = await response.json();
@@ -57,7 +58,7 @@ function App() {
   console.log(customerList);
 
   const selectCustomer = async (id) => {
-    const response = await fetch(`http://localhost:8081/customer/${id}`);
+    const response = await fetch(`http://localhost:8080/customer/${id}`);
     const singleCustomer = await response.json();
     console.log(singleCustomer);
     setCustomer(singleCustomer);
@@ -67,7 +68,7 @@ function App() {
   }, []);
 
   const deleteData = (id) => {
-    fetch(`http://localhost:8081/customer/${id}`, {
+    fetch(`http://localhost:8080/customer/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -85,7 +86,7 @@ function App() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:8081/customer/${customer.id}`, {
+    fetch(`http://localhost:8080/customer/${customer.id}`, {
       method: "PUT",
       body: JSON.stringify(customer),
 
