@@ -2,7 +2,7 @@ import React from "react";
 
 import "bootswatch/dist/morph/bootstrap.min.css";
 import { Link } from "react-router-dom";
-//import "./inputForm.scss";
+import "./inputForm.scss";
 
 function InputForm({
   handleChange,

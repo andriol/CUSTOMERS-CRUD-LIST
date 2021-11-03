@@ -1,5 +1,5 @@
-import Form from "./components/input_form/inputForm";
-import EditForm from "./components/input_form/editForm";
+import Form from "./components/input-form/inputForm";
+import EditForm from "./components/input-form/editForm";
 import uuid from "react-uuid";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";

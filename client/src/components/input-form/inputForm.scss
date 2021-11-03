@@ -1,0 +1,21 @@
+.btn-info {
+  width: 6rem;
+  margin-right: 1rem;
+}
+.btn-danger {
+  width: 6rem;
+}
+.btn-primary {
+  margin-top: 1rem;
+}
+@media screen and (max-width: 768px) {
+  .btn-danger,
+  .btn-primary {
+    margin-top: 1rem;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .btn-danger {
+    margin-top: 1rem;
+  }
+}
